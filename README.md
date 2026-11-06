@@ -1,9 +1,6 @@
 # Docker Image for Open Source CPAP Analysis Reporter (OSCAR)
 
-[![Docker Image Version (latest semver)](https://img.shields.io/docker/v/rodneyshupe/docker-oscar)](https://hub.docker.com/r/rodneyshupe/docker-oscar/tags)
 [![license](https://img.shields.io/github/license/rodneyshupe/docker-oscar)](https://github.com/rodneyshupe/docker-oscar/blob/main/LICENSE)
-[![DockerHub pulls](https://img.shields.io/docker/pulls/rodneyshupe/docker-oscar.svg)](https://hub.docker.com/r/rodneyshupe/docker-oscar/)
-[![DockerHub stars](https://img.shields.io/docker/stars/rodneyshupe/docker-oscar.svg)](https://hub.docker.com/r/rodneyshupe/docker-oscar/)
 [![GitHub stars](https://img.shields.io/github/stars/rodneyshupe/docker-oscar.svg)](https://github.com/rodneyshupe/docker-oscar)
 [![Contributors](https://img.shields.io/github/contributors/rodneyshupe/docker-oscar.svg)](https://github.com/rodneyshupe/docker-oscar/graphs/contributors)
 [![Docker Image CI](https://github.com/rodneyshupe/docker-oscar/actions/workflows/docker-image.yml/badge.svg)](https://github.com/rodneyshupe/docker-oscar/actions/workflows/docker-image.yml)
@@ -12,10 +9,11 @@
 A Docker image for **[OSCAR](https://www.sleepfiles.com/OSCAR/)** to run inside Docker container and access it remotely using web browser.
 
 
-Repository name in Docker Hub: **[rodneyshupe/docker-oscar](https://hub.docker.com/r/rodneyshupe/docker-oscar/)**  
-Repository name in ghcr.io: **[ghcr.io/rodneyshupe/docker-oscar](https://ghcr.io/rodneyshupe/docker-oscar)**
+Image on ghcr.io: **[ghcr.io/rodneyshupe/docker-oscar](https://ghcr.io/rodneyshupe/docker-oscar)**
 
-Published via **automated build** mechanism  
+Published via **automated build** (GitHub Actions) for `linux/amd64` and `linux/arm64`. Currently packages OSCAR **1.7.2**.
+
+> Fork of [rogerrum/docker-oscar](https://github.com/rogerrum/docker-oscar), which is no longer updated frequently. Images are published to ghcr.io only (not Docker Hub).
 
 ![img.png](https://raw.githubusercontent.com/rodneyshupe/docker-oscar/main/.github/demo-img.png)
 
@@ -29,7 +27,7 @@ docker run \
     -v=${pwd}/oscar-data:/config/Documents/OSCAR_Data \
     -v=${pwd}/SDCARD:/config/SDCARD \
     --publish=3000:3000 \
-     rodneyshupe/docker-oscar
+     ghcr.io/rodneyshupe/docker-oscar:latest
   
 ```
 To stop the container simply run:
@@ -50,7 +48,7 @@ image. Just download the repo and run it like so:
 version: '3.8'
 services:
   oscar:
-    image: rodneyshupe/docker-oscar:latest
+    image: ghcr.io/rodneyshupe/docker-oscar:latest
     container_name: oscar
     restart: unless-stopped
     ports:
@@ -109,7 +107,7 @@ When its back up you should be able to SSH in and ping 192.168.4.1 which is the 
 version: '3.8'
 services:
   oscar:
-    image: rodneyshupe/docker-oscar:latest
+    image: ghcr.io/rodneyshupe/docker-oscar:latest
     container_name: oscar
     restart: unless-stopped
     ports:
@@ -131,8 +129,7 @@ cron job is created only when env CRON_HOUR and CRON_MIN are passed.
 
 ### Additional Docker image for transferring data (Used as Kube Cron Job)
 
-Repository name in Docker Hub: **[rodneyshupe/docker-oscar-cron](https://hub.docker.com/r/rodneyshupe/docker-oscar-cron/)**
-Repository name in ghcr.io: **[rodneyshupe/docker-oscar-cron](https://ghcr.io/rodneyshupe/docker-oscar-cron)**
+Image on ghcr.io: **[ghcr.io/rodneyshupe/docker-oscar-cron](https://ghcr.io/rodneyshupe/docker-oscar-cron)**
 
 This is how I am using the cron on my Kube cluster
 https://github.com/rogerrum/k8s-gitops/blob/main/main/homelab/oscar/templates/cronjob.yaml
