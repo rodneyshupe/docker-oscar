@@ -11,7 +11,7 @@ A Docker image for **[OSCAR](https://www.sleepfiles.com/OSCAR/)** to run inside 
 
 Image on ghcr.io: **[ghcr.io/rodneyshupe/docker-oscar](https://ghcr.io/rodneyshupe/docker-oscar)**
 
-Published via **automated build** (GitHub Actions) for `linux/amd64` and `linux/arm64`. Currently packages OSCAR **1.7.2**.
+Published via **automated build** (GitHub Actions) for `linux/amd64` and `linux/arm64`. Currently packages OSCAR **2.1.1** (Qt6, Debian 12 build; the `oscar-2` branch until merged).
 
 > Fork of [rogerrum/docker-oscar](https://github.com/rogerrum/docker-oscar), which is no longer updated frequently. Images are published to ghcr.io only (not Docker Hub).
 
